@@ -34,16 +34,40 @@ dates = ['20 Mar 2022', '27 Mar 2022', '10 Apr 2022', '24 Apr 2022', '08 May 202
 racenames = ['Bahrain GP', 'Saudi Arabian GP', 'Australian GP', 'Emilia Romagna GP', 'Miami GP', 'Spanish GP', 'Monaco GP',
              'Azerbaijan GP', 'Canadian GP', 'British GP', 'Austrian GP', 'French GP', 'Hungarian GP', 'Belgian GP', 'Dutch GP',
              'Italian GP', 'Singapore GP', 'Japanese GP', 'United States GP', 'Mexican GP', 'Brazilian GP', 'Abu Dhabi GP',]
-points = []
+
 
 def getpointsanddates(team):
-    points.clear()
+    pointsanddates = []
     for drivers in team:
         r = requests.get(drivers).text
         soup = BeautifulSoup(r, 'html.parser')
-        for data in soup.find_all("td", class_="dark bold"):
-            points.append(data.get_text())
-    return points
+        race = {}
+        for index, data in enumerate(soup.find_all("td", class_="dark bold")):
+            if index % 2 == 0:
+                race['date'] = data.get_text()
+            else:
+                race['points'] = int(data.get_text())
+                pointsanddates.append(race)
+                race = {}
+    # print(pointsanddates)
+    return pointsanddates
+
+def squish(pointsanddates):
+    squishlist = []
+    for race in pointsanddates:
+        if race['date'] in [d['date'] for d in squishlist]:
+            existingrace = [item for item in squishlist if item['date'] == race['date']][0]
+            existingrace['points'] += race['points']
+        else:
+            squishlist.append(race)
+    return squishlist
+
+def sumpoints(squishlist):
+    total = 0
+    for race in squishlist:
+        total += race['points']
+        race['points'] = total
+    return squishlist
 
 def getpoints(pointslist, date):
     lst = []
@@ -58,13 +82,16 @@ def getpoints(pointslist, date):
 def getracenames():
     numraces = (len(getpointsanddates(TeamM))/5)/2
     d = racenames[0:int(numraces)]
+    print(numraces)
+    print(numraces * 2)
+    getpoints()
     return d
 
 def cleanpoints(team):
     # while date is in the index range keep pluging it into getpoints()
     # data = [sum(1st race), sum(1st race plus 2nd race)]
     # take last value and add new value to get 
-    getpointsanddates(team) 
+    points = getpointsanddates(team)
     race1 = getpoints(points, '20 Mar 2022')
     race2 = getpoints(points, '27 Mar 2022')
     race3 = getpoints(points, '10 Apr 2022')
@@ -94,7 +121,13 @@ def main():
             ))
 
 if __name__ == "__main__":
-    main()
+    # main()
+    a = getpointsanddates(TeamM)
+    print(a)
+    b = squish(a)
+    print(b)
+    c = sumpoints(b)
+    print(c)
 
 # list of possible dates then we have it divide the races by five to find x many races then it runs
 # all the dates up to that index
