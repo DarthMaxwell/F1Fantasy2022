@@ -35,6 +35,12 @@ racenames = ['Bahrain GP', 'Saudi Arabian GP', 'Australian GP', 'Emilia Romagna 
              'Azerbaijan GP', 'Canadian GP', 'British GP', 'Austrian GP', 'French GP', 'Hungarian GP', 'Belgian GP', 'Dutch GP',
              'Italian GP', 'Singapore GP', 'Japanese GP', 'United States GP', 'Mexican GP', 'Brazilian GP', 'Abu Dhabi GP',]
 
+def getlocationsanddates():
+    locationsanddates = []
+    r = requests.get(url).text
+    soup = BeautifulSoup(r, 'html.parser')
+    location = {}
+    # scrit dates and location to each race in a object togther
 
 def getpointsanddates(team):
     pointsanddates = []
@@ -49,7 +55,6 @@ def getpointsanddates(team):
                 race['points'] = int(data.get_text())
                 pointsanddates.append(race)
                 race = {}
-    # print(pointsanddates)
     return pointsanddates
 
 def squish(pointsanddates):
@@ -69,44 +74,19 @@ def sumpoints(squishlist):
         race['points'] = total
     return squishlist
 
-def getpoints(pointslist, date):
-    lst = []
-    indices = [i for i, x in enumerate(pointslist) if x == date]
-    # print(indices)
-    for indexs in indices:
-        # print(pointslist[indexs])
-        lst.append(pointslist[indexs+1])
-    lst = [int(i) for i in lst]
-    return(sum(lst))
-
 def getracenames():
-    numraces = (len(getpointsanddates(TeamM))/5)/2
-    d = racenames[0:int(numraces)]
-    print(numraces)
-    print(numraces * 2)
-    getpoints()
-    return d
+    numraces = (len(getpointsanddates(TeamM))/5)
+    # will have to update this later when i scrape {location, date}
+    return racenames[0:int(numraces)]
 
-def cleanpoints(team):
-    # while date is in the index range keep pluging it into getpoints()
-    # data = [sum(1st race), sum(1st race plus 2nd race)]
-    # take last value and add new value to get 
-    points = getpointsanddates(team)
-    race1 = getpoints(points, '20 Mar 2022')
-    race2 = getpoints(points, '27 Mar 2022')
-    race3 = getpoints(points, '10 Apr 2022')
-    race4 = getpoints(points, '24 Apr 2022')
-    race5 = getpoints(points, '08 May 2022')
-    race6 = getpoints(points, '22 May 2022')
-    data = [race1, race1 + race2,
-            race1 + race2 + race3,
-            race1 + race2 + race3 + race4,
-            race1 + race2 + race3 + race4 + race5,
-            race1 + race2 + race3 + race4 + race5 + race6,
-            ]
-    return data
+def main(team):
+    pointsanddates = getpointsanddates(team)
+    squishlist = squish(pointsanddates)
+    a = sumpoints(squishlist)
+    data = [b['points'] for b in a]
+    return data    
 
-def main():
+def updatehtml():
     root = os.path.dirname(os.path.abspath(__file__))
     templates_dir = os.path.join(root, 'templates')
     env = Environment( loader = FileSystemLoader(templates_dir) )
@@ -115,19 +95,13 @@ def main():
     with open(filename, 'w') as fh:
         fh.write(template.render(
             racenames = getracenames(),
-            datam = cleanpoints(TeamM),
-            datac = cleanpoints(TeamC),
-            dataz = cleanpoints(TeamZ),
+            datam = main(TeamM),
+            datac = main(TeamC),
+            dataz = main(TeamZ),
             ))
 
 if __name__ == "__main__":
-    # main()
-    a = getpointsanddates(TeamM)
-    print(a)
-    b = squish(a)
-    print(b)
-    c = sumpoints(b)
-    print(c)
+    updatehtml()
 
 # list of possible dates then we have it divide the races by five to find x many races then it runs
 # all the dates up to that index
