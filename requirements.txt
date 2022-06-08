@@ -1,3 +1,4 @@
+You need to pip install each one of these
 beautifulsoup4==4.11.1
 Jinja2==3.1.2
 requests==2.27.1
