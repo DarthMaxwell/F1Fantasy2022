@@ -27,8 +27,6 @@ TeamZ = [
     'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html'
     ]
 
-# proxies = {'145.239.85.58:9300', '47.91.88.100:1080'} can change these
-
 def getpointsanddates(team):
     pointsanddates = []
     for drivers in team:

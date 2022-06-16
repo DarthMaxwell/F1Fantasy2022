@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html style="color:white;">
-    <head>
-        <h1 style="background-color:rgb(255, 6, 0);">
-            <center style="font-size:4">F1 Fantasy 2022</center>
-        </h1>
-    </head>
-    <body style="background-color:rgb(21, 20, 30);">
-        <div>
-            <center>
-                <canvas id="myChart"></canvas>
-            </center>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-          const labels = 
-            {{locations}}
-          ;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Graph</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div>
+            <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const labels = 
+        {{locations}}
+      ;
 
-          const data = {
-            labels: labels,
-            datasets: [{
-              label: "Maxwell's team",
-              backgroundColor: 'rgb(76, 0, 153)',
-              borderColor: 'rgb(76, 0, 153)',
-              data: {{datam}},
-            }, {
-              label: "Cara's team",
-              backgroundColor: 'rgb(0, 255, 0)',
-              borderColor: 'rgb(0, 255, 0)',
-              data: {{datac}},
-            }, {
-              label: "Zara's team",
-              backgroundColor: 'rgb(0, 255, 255)',
-              borderColor: 'rgb(0, 255, 255)',
-              data: {{dataz}},
-            }
-            ]
-          };
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: "Maxwell's team",
+          backgroundColor: 'rgb(76, 0, 153)',
+          borderColor: 'rgb(76, 0, 153)',
+          data: {{datam}},
+        }, {
+          label: "Cara's team",
+          backgroundColor: 'rgb(0, 255, 0)',
+          borderColor: 'rgb(0, 255, 0)',
+          data: {{datac}},
+        }, {
+          label: "Zara's team",
+          backgroundColor: 'rgb(0, 255, 255)',
+          borderColor: 'rgb(0, 255, 255)',
+          data: {{dataz}},
+        }
+        ]
+      };
 
-          const config = {
-            type: 'line',
-            data: data,
-            options: {}
-          };
-        </script>
-        <script>
-          const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-          );
-        </script>
-    </body>
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+    </script>
+    <script>
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+    </script>
+</body>
 </html>
