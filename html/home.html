@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fantasy F1</title>
+    <link rel="shortcut icon" href="../assets/f1logothing.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <span class="open-slide">
+        <a href="#" onclick="openSlideMenu()">
+          <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+          </svg>
+        </a>
+      </span>
+      <h1 class="navbar-nav">Fantasy F1</h1>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="home.html">Home</a>
+      <a href="index.html">Fantasy Graph</a>
+      <a href="maxwellsteam.html">Maxwell's Team</a>
+      <a href="carasteam.html">Cara's Team</a>
+      <a href="zarasteam.html">Zara's Team</a>
+    </div>
+
+    <div id="main">
+      <h1>About</h1>
+      <p>
+        This is my take on Fantasy F1. F1 has there own offical
+        <a href="https://fantasy.formula1.com/">Fantasy F1</a>. Me, my sister
+        and my mom all picked 5 drivers for our teams. Zara my little sister
+        picked first bec she dosnt really watch F1. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. At doloribus dolorum est magnam. Nesciunt
+        inventore beatae quibusdam eligendi fugit voluptatum, suscipit,
+        similique odio nam, iure rerum unde ut. Culpa, ipsa! Magni nihil
+        doloribus nostrum tempora quo recusandae dolor ad eveniet? Consequatur
+        quisquam consectetur facere, omnis pariatur fugiat rerum ratione
+        nesciunt. Hic, esse porro facere cumque quae pariatur numquam sapiente
+        quibusdam explicabo laboriosam, recusandae tempore provident molestiae
+        minima voluptas omnis. Ad nostrum qui repudiandae quo, dicta dolore
+        aliquam dolor quos nulla nesciunt quibusdam temporibus nisi atque illo
+        itaque ratione beatae nam quisquam culpa voluptatum eveniet? Magni error
+        similique ab officia minus?
+      </p>
+    </div>
+
+    <script>
+      function openSlideMenu() {
+        document.getElementById("side-menu").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeSlideMenu() {
+        document.getElementById("side-menu").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
+  </body>
+</html>

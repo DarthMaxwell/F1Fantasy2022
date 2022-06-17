@@ -8,7 +8,7 @@ TeamM = [
     'https://www.formula1.com/en/results.html/2022/drivers/LEWHAM01/lewis-hamilton.html',
     'https://www.formula1.com/en/results.html/2022/drivers/KEVMAG01/kevin-magnussen.html',
     'https://www.formula1.com/en/results.html/2022/drivers/DANRIC01/daniel-ricciardo.html',
-    'https://www.formula1.com/en/results.html/2022/drivers/YUKTSU01/yuki-tsunoda.html'
+    'https://www.formula1.com/en/results.html/2022/drivers/YUKTSU01/yuki-tsunoda.html',
     ]
 
 TeamC = [
@@ -16,7 +16,7 @@ TeamC = [
     'https://www.formula1.com/en/results.html/2022/drivers/GEORUS01/george-russell.html',
     'https://www.formula1.com/en/results.html/2022/drivers/ESTOCO01/esteban-ocon.html',
     'https://www.formula1.com/en/results.html/2022/drivers/LANNOR01/lando-norris.html',
-    'https://www.formula1.com/en/results.html/2022/drivers/MICSCH02/mick-schumacher.html'
+    'https://www.formula1.com/en/results.html/2022/drivers/MICSCH02/mick-schumacher.html',
     ]
 
 TeamZ = [
@@ -24,10 +24,8 @@ TeamZ = [
     'https://www.formula1.com/en/results.html/2022/drivers/VALBOT01/valtteri-bottas.html',
     'https://www.formula1.com/en/results.html/2022/drivers/SERPER01/sergio-perez.html',
     'https://www.formula1.com/en/results.html/2022/drivers/PIEGAS01/pierre-gasly.html',
-    'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html'
+    'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html',
     ]
-
-# proxies = {'145.239.85.58:9300', '47.91.88.100:1080'} can change these
 
 def getpointsanddates(team):
     pointsanddates = []
