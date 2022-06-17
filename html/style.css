@@ -12,14 +12,16 @@ body{
     text-align: center;
     float: left;
     width: 20%;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 
 .navbar{
     background-color: red;
     overflow: hidden;
     height: 63px;
+}
+
+#myChart{
+    margin-left: 35px;
 }
 
 .navbar a{

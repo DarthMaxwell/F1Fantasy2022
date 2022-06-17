@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fantasy Graph</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fantasy Graph</title>
+    <link rel="shortcut icon" href="../assets/f1logothing.png">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <span class="open-slide">
+        <a href="#" onclick="openSlideMenu()">
+          <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+          </svg>
+        </a>
+      </span>
+      <h1 class="navbar-nav">Fantasy F1</h1>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="home.html">Home</a>
+      <a href="index.html">Fantasy Graph</a>
+      <a href="maxwellsteam.html">Maxwell's Team</a>
+      <a href="carasteam.html">Cara's Team</a>
+      <a href="zarasteam.html">Zara's Team</a>
+    </div>
+
+    <div id="main">
+      <h1>About</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id nisi
+        aspernatur quia adipisci enim saepe, nulla quidem consequatur quasi
+        dolores a voluptatum distinctio modi dolor laudantium facilis laborum
+        autem voluptas. REEE
+      </p>
+    </div>
+
+    <script>
+      function openSlideMenu() {
+        document.getElementById("side-menu").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeSlideMenu() {
+        document.getElementById("side-menu").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
+
     <div>
-            <canvas id="myChart"></canvas>
+      <canvas id="myChart"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      const labels = 
+      const labels =
         {{locations}}
       ;
 
@@ -45,10 +89,7 @@
       };
     </script>
     <script>
-      const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-      );
+      const myChart = new Chart(document.getElementById("myChart"), config);
     </script>
-</body>
+  </body>
 </html>
