@@ -79,7 +79,7 @@ def updatehtml():
     templates_dir = os.path.join(root, 'templates')
     env = Environment( loader = FileSystemLoader(templates_dir) )
     template = env.get_template('index.html')
-    filename = os.path.join(root, 'html', 'index.html')
+    filename = os.path.join(root, 'docs', 'index.html')
     with open(filename, 'w') as fh:
         fh.write(template.render(
             locations = getlocations(),
