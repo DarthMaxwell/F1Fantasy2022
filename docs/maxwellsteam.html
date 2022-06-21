@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maxwell's Team</title>
+    <link rel="shortcut icon" href="../assets/f1logothing.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <span class="open-slide">
+        <a href="#" onclick="openSlideMenu()">
+          <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+          </svg>
+        </a>
+      </span>
+      <h1 class="navbar-nav">Fantasy F1</h1>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+      <a href="home.html">Home</a>
+      <a href="index.html">Fantasy Graph</a>
+      <a href="maxwellsteam.html">Maxwell's Team</a>
+      <a href="carasteam.html">Cara's Team</a>
+      <a href="zarasteam.html">Zara's Team</a>
+    </div>
+
+    <div id="main">
+      <h1>Maxwell's Team</h1>
+      <div class="block">
+        <img
+          src="https://www.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/2col/image.png"
+          alt="Picture of Max Verstappen"
+        />
+        <h4>Max Verstappen</h4>
+      </div>
+      <div class="block">
+        <img
+          src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col/image.png"
+          alt="Picture of Lewis Hamilton"
+        />
+        <h4>Lewis Hamilton</h4>
+      </div>
+      <div class="block">
+        <img
+          src="https://www.formula1.com/content/dam/fom-website/drivers/D/DANRIC01_Daniel_Ricciardo/danric01.png.transform/2col/image.png"
+          alt="Picture of Daniel Riccardo"
+        />
+        <h4>Daniel Riccardo</h4>
+      </div>
+      <div class="block">
+        <img
+          src="https://www.formula1.com/content/dam/fom-website/drivers/K/KEVMAG01_Kevin_Magnussen/kevmag01.png.transform/2col/image.png"
+          alt="Picture of Kevin Magnussen"
+        />
+        <h4>Kevin Magnussen</h4>
+      </div>
+      <div class="block">
+        <img
+          src="https://www.formula1.com/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/2col/image.png"
+          alt="Picture of Yuki Tsunoda"
+        />
+        <h4>Yuki Tsunoda</h4>
+      </div>
+      <div class="clr"></div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quia
+        distinctio, placeat vero, earum quasi dolorum commodi molestiae
+        assumenda repellat labore veniam cumque voluptas voluptates quidem iste
+        eius odio. Facilis!
+      </p>
+    </div>
+
+    <script>
+      function openSlideMenu() {
+        document.getElementById("side-menu").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeSlideMenu() {
+        document.getElementById("side-menu").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
+  </body>
+</html>
