@@ -27,10 +27,15 @@ TeamZ = [
     'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html',
     ]
 
+proxies = {
+    'https': 'http://194.233.77.110:6666',
+    'http': 'http://207.180.199.65:3128',
+}
+
 def getpointsanddates(team):
     pointsanddates = []
     for drivers in team:
-        r = requests.get(drivers).text
+        r = requests.get(drivers, proxies=proxies).text
         soup = BeautifulSoup(r, 'html.parser')
         race = {}
         for index, data in enumerate(soup.find_all("td", class_="dark bold")):
