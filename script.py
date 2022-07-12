@@ -2,6 +2,7 @@ import requests
 import os
 from jinja2 import Environment, FileSystemLoader
 from bs4 import BeautifulSoup
+import datetime
 
 TeamM = [
     'https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html',
@@ -67,12 +68,21 @@ def sumpoints(squishlist): # this makes it so points of the second race is first
         race['points'] = total
     return squishlist
 
+def getteamname(team):
+    if team[0] == 'https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html':
+        return("Maxwell's team")
+    elif team[0] == 'https://www.formula1.com/en/results.html/2022/drivers/CARSAI01/carlos-sainz.html':
+        return("Cara's team")
+    elif team[0] == 'https://www.formula1.com/en/results.html/2022/drivers/CHALEC01/charles-leclerc.html':
+        return("Zara's team")
+
 def main(team): # this returns just the points bec thats all we need for the graph
     pointsanddates = getpointsanddates(team)
     squishlist = squishpoints(pointsanddates)
     a = sumpoints(squishlist)
     points = [b['points'] for b in a]
-    print("Finished scrapping points for " + team)
+    teamname = getteamname(team)
+    print("Finished scrapping points for " + str(teamname))
     return points
 
 def updatehtml(): # This uses the /templates/index.html template to update the /docs/index.html
@@ -90,17 +100,22 @@ def updatehtml(): # This uses the /templates/index.html template to update the /
             ))
 
 def prettytop():
-    print("-" * 50)
+    print("-" * 55)
     print("Scrapping the web for points")
-    print("-" * 50)
+    print("Starting time " + str(start))
+    print("-" * 55)
 
 def prettybottom():
     races = len(getlocations())
-    print("-" * 50)
-    print("Updated html all good to go. There have been " + races + " races")
-    print("-" * 50)
+    end = datetime.datetime.now()
+    timedelta = end - start
+    print("-" * 55)
+    print("Updated html all good to go. There have been " + str(races) + " races")
+    print("Time elapsed " + str(timedelta.total_seconds()) + " seconds")
+    print("-" * 55)
 
 if __name__ == "__main__":
+    start = datetime.datetime.now()
     prettytop()
     updatehtml()
     prettybottom()
