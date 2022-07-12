@@ -27,7 +27,15 @@ TeamZ = [
     'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html',
     ]
 
-def getpointsanddates(team):
+def getlocations(): # x-axis of the graph
+    locations = []
+    r = requests.get('https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html').text
+    soup = BeautifulSoup(r, 'html.parser')
+    for data in soup.find_all("a", class_="dark ArchiveLink"):
+        locations.append(data.get_text())
+    return locations
+
+def getpointsanddates(team): # gets all the date points for each race for each driver in a team
     pointsanddates = []
     for drivers in team:
         r = requests.get(drivers).text
@@ -42,15 +50,7 @@ def getpointsanddates(team):
                 race = {}
     return pointsanddates
 
-def getlocations():
-    locations = []
-    r = requests.get('https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html').text
-    soup = BeautifulSoup(r, 'html.parser')
-    for data in soup.find_all("a", class_="dark ArchiveLink"):
-        locations.append(data.get_text())
-    return locations
-
-def squishpoints(pointsanddates):
+def squishpoints(pointsanddates): # addes the points for the same date
     squishlist = []
     for race in pointsanddates:
         if race['date'] in [d['date'] for d in squishlist]:
@@ -60,21 +60,21 @@ def squishpoints(pointsanddates):
             squishlist.append(race)
     return squishlist
 
-def sumpoints(squishlist):
+def sumpoints(squishlist): # this makes it so points of the second race is first race points + second race points
     total = 0
     for race in squishlist:
         total += race['points']
         race['points'] = total
     return squishlist
 
-def main(team):
+def main(team): # this returns just the points bec thats all we need for the graph
     pointsanddates = getpointsanddates(team)
     squishlist = squishpoints(pointsanddates)
     a = sumpoints(squishlist)
     points = [b['points'] for b in a]
     return points
 
-def updatehtml():
+def updatehtml(): # This uses the /templates/index.html template to update the /docs/index.html
     root = os.path.dirname(os.path.abspath(__file__))
     templates_dir = os.path.join(root, 'templates')
     env = Environment( loader = FileSystemLoader(templates_dir) )
@@ -89,4 +89,10 @@ def updatehtml():
             ))
 
 if __name__ == "__main__":
+    print("-" * 50)
+    print("Scraping web for points")
+    print("-" * 50)
     updatehtml()
+    print("-" * 50)
+    print("DONE wanna add how long it took and how many races there have been")
+    print("-" * 50)
