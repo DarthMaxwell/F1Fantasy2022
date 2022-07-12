@@ -82,7 +82,7 @@ def main(team): # this returns just the points bec thats all we need for the gra
     a = sumpoints(squishlist)
     points = [b['points'] for b in a]
     teamname = getteamname(team)
-    print("Finished scrapping points for " + str(teamname))
+    print("Finished scraping points for " + str(teamname))
     return points
 
 def updatehtml(): # This uses the /templates/index.html template to update the /docs/index.html
