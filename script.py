@@ -27,8 +27,7 @@ TeamZ = [
     'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html',
     ]
 
-<<<<<<< HEAD
-def getlocations(): # x-axis of the graph
+def getlocations():
     locations = []
     r = requests.get('https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html').text
     soup = BeautifulSoup(r, 'html.parser')
@@ -36,15 +35,7 @@ def getlocations(): # x-axis of the graph
         locations.append(data.get_text())
     return locations
 
-def getpointsanddates(team): # gets all the date points for each race for each driver in a team
-=======
-proxies = {
-    'https': 'http://194.233.77.110:6666',
-    'http': 'http://207.180.199.65:3128',
-}
-
 def getpointsanddates(team):
->>>>>>> 60588a4dcf9c03ed8f70d832825e8922d64644f5
     pointsanddates = []
     for drivers in team:
         r = requests.get(drivers).text # This is where you would add the proxies
@@ -81,6 +72,7 @@ def main(team): # this returns just the points bec thats all we need for the gra
     squishlist = squishpoints(pointsanddates)
     a = sumpoints(squishlist)
     points = [b['points'] for b in a]
+    print("Finished scrapping points for " + team)
     return points
 
 def updatehtml(): # This uses the /templates/index.html template to update the /docs/index.html
@@ -97,15 +89,18 @@ def updatehtml(): # This uses the /templates/index.html template to update the /
             dataz = main(TeamZ),
             ))
 
+def prettytop():
+    print("-" * 50)
+    print("Scrapping the web for points")
+    print("-" * 50)
+
+def prettybottom():
+    races = len(getlocations())
+    print("-" * 50)
+    print("Updated html all good to go. There have been " + races + " races")
+    print("-" * 50)
+
 if __name__ == "__main__":
-<<<<<<< HEAD
-    print("-" * 50)
-    print("Scraping web for points")
-    print("-" * 50)
+    prettytop()
     updatehtml()
-    print("-" * 50)
-    print("DONE wanna add how long it took and how many races there have been")
-    print("-" * 50)
-=======
-    updatehtml()
->>>>>>> 60588a4dcf9c03ed8f70d832825e8922d64644f5
+    prettybottom()
