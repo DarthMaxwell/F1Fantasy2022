@@ -4,29 +4,29 @@ from jinja2 import Environment, FileSystemLoader
 from bs4 import BeautifulSoup
 import datetime
 
-TeamM = [
+TeamM = (
     'https://www.formula1.com/en/results.html/2022/drivers/MAXVER01/max-verstappen.html',
     'https://www.formula1.com/en/results.html/2022/drivers/LEWHAM01/lewis-hamilton.html',
     'https://www.formula1.com/en/results.html/2022/drivers/KEVMAG01/kevin-magnussen.html',
     'https://www.formula1.com/en/results.html/2022/drivers/DANRIC01/daniel-ricciardo.html',
     'https://www.formula1.com/en/results.html/2022/drivers/YUKTSU01/yuki-tsunoda.html',
-    ]
+    )
 
-TeamC = [
+TeamC = (
     'https://www.formula1.com/en/results.html/2022/drivers/CARSAI01/carlos-sainz.html',
     'https://www.formula1.com/en/results.html/2022/drivers/GEORUS01/george-russell.html',
     'https://www.formula1.com/en/results.html/2022/drivers/ESTOCO01/esteban-ocon.html',
     'https://www.formula1.com/en/results.html/2022/drivers/LANNOR01/lando-norris.html',
     'https://www.formula1.com/en/results.html/2022/drivers/MICSCH02/mick-schumacher.html',
-    ]
+    )
 
-TeamZ = [
+TeamZ = (
     'https://www.formula1.com/en/results.html/2022/drivers/CHALEC01/charles-leclerc.html',
     'https://www.formula1.com/en/results.html/2022/drivers/VALBOT01/valtteri-bottas.html',
     'https://www.formula1.com/en/results.html/2022/drivers/SERPER01/sergio-perez.html',
     'https://www.formula1.com/en/results.html/2022/drivers/PIEGAS01/pierre-gasly.html',
     'https://www.formula1.com/en/results.html/2022/drivers/FERALO01/fernando-alonso.html',
-    ]
+    )
 
 def getlocations():
     locations = []
