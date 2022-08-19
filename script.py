@@ -101,7 +101,7 @@ def updatehtml(): # This uses the /templates/index.html template to update the /
 
 def prettytop():
     print("-" * 55)
-    print("Scrapping the web for points")
+    print("Scrapping F1 results for points")
     print("Starting time " + str(start))
     print("-" * 55)
 
